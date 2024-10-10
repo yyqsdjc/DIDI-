@@ -1,0 +1,7 @@
+{
+  "aide.openaiBaseUrl": "https://spark-api-open.xf-yun.com/v1",
+  "aide.openaiKey": "MTkwNTRhZTFhZGMyMDU0NmM3MzEwOTdm",
+  "aide.openaiModel": "4.0Ultra",
+  "aide.readClipboardImage": true,
+  "Codegeex.RepoIndex": true
+}
