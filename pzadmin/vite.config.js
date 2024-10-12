@@ -15,4 +15,10 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
   ],
+  build: {
+    outDir: 'dist', // 输出目录
+    assetsDir: 'assets', // 静态资源目录
+    minify: 'esbuild', // 'esbuild' 或 'terser' 来进行压缩
+    rollupOptions: {}
+  }
 })
