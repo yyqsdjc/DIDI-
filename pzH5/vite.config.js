@@ -16,5 +16,11 @@ export default {
       resolvers: [VantResolver()],
     }),
   ],
+  build: {
+    outDir: 'dist', // 指定输出目录
+    assetsDir: 'assets', // 指定静态资源目录
+    minify: 'esbuild', // 使用 esbuild 进行代码压缩
+    rollupOptions: {}
+  }
 };
 
