@@ -2,7 +2,7 @@
 import { ref, reactive, toRaw } from 'vue'
 import { getCode, userAuthentication, login, menuPermissions } from '../../api/index'
 import { UserFilled, Lock } from '@element-plus/icons-vue'
-import { useRouter } from 'vue-router' 
+import { useRouter } from 'vue-router'
 import { useMenuStore } from "../../store/menu"
 
 // vite提供的import.meta.url可以获取当前文件的url
@@ -110,35 +110,36 @@ const submitForm = async (formEl) => {
     if (valid) {
       // 注册
       if (formType.value) {
-        userAuthentication(loginForm).then(({data}) => {
+        userAuthentication(loginForm).then(({ data }) => {
           if (data.code === 10000) {
             ElMessage.success('注册成功')
             formType.value = 0
-          }          
+          }
         })
       } else {
         // 登录
-        login(loginForm).then(({data}) => {
+        login(loginForm).then(({ data }) => {
           if (data.code === 10000) {
             ElMessage.success('登录成功!')
             // 将token和用户信息存储到浏览器
+
             localStorage.setItem('pz_token', data.data.token)
             localStorage.setItem('pz_userInfo', JSON.stringify(data.data.userInfo))
             // 获取权限信息
-            menuPermissions().then(({data}) => {
+            menuPermissions().then(({ data }) => {
               menuStore.dynamicMenu(data.data)
               // console.log('menuStore.routerList', menuStore.routerList); // 响应式对象
               // roRaw 将响应式对象转为普通对象(因为router.addRoute方法需要普通对象)
               toRaw(menuStore.routerList).forEach(item => {
                 // 向路由的main路由中添加子路由
-                router.addRoute('main', item)  
+                router.addRoute('main', item)
               })
               // console.log('动态路由首次添加', router.getRoutes());
-              router.push('/')   
+              router.push('/#/')
             })
           }
         })
-      }   
+      }
     } else {
       console.log('error submit!', fields)
     }

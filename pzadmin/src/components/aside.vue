@@ -1,10 +1,9 @@
 <script setup>
 import TreeMenu from "./treeMenu.vue";
-import { useRouter } from "vue-router";
 import { useMenuStore } from "../store/menu"
 
 const menuStore = useMenuStore();
-const isCollapse = menuStore.isCollapse// 从 store 中获取菜单是否折叠的状态
+// const isCollapse = ref(menuStore.isCollapse)// 从 store 中获取菜单是否折叠的状态
 
 const handleOpen = () => {};
 const handleClose = () => {};
@@ -12,14 +11,14 @@ const handleClose = () => {};
 
 <template>
   <el-menu
-    :style="{width: isCollapse ? '64px' : '230px'}"
+    :style="{width: menuStore.isCollapse ? '64px' : '230px'}"
     class="aside-container"
     @open="handleOpen"
     @close="handleClose"
-    :collapse="isCollapse"
+    :collapse="menuStore.isCollapse"
     :default-active="menuStore.menuActive"
   >
-    <p class="logo-lg">{{ isCollapse ? 'DIDI' : 'DIDI陪诊'}}</p>
+    <p class="logo-lg">{{ menuStore.isCollapse ? 'DIDI' : 'DIDI陪诊'}}</p>
     <TreeMenu :index="1" :menuData="menuStore.routerList" />
   </el-menu>
 </template>

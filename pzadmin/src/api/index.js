@@ -79,3 +79,8 @@ export const adminOrder = (params) => {
 export const updateOrder = (data) => {
   return request.post('/update/order', data)
 }
+
+// 获取报表信息
+export const report = () => {
+  return request.get('/report')
+}

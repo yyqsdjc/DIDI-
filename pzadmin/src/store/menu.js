@@ -1,18 +1,11 @@
 import { defineStore } from "pinia"
 import { useRoute } from 'vue-router';
 import { ref } from "vue"
-
+//在state或者localStorage
 export const useMenuStore = defineStore(
   'Menu',
   () => {
-    // const localData = localStorage.getItem('pz_v3pz')
-    // if (localData) {
-    //   const isCollapse = localData.isCollapse
-    //   const selectMenu = localData.selectMenu
-    //   const routerList = localData.routerList
-    //   const menuActive = localData.menuActive
-    // }
-
+    // const localData = localStorage.getItem('pz_v3pz') ?? []
     const isCollapse = ref(false)
     const selectMenu = ref([])
     const routerList = ref([])
@@ -50,7 +43,7 @@ export const useMenuStore = defineStore(
         })
       }
       routerSet(payload)
-      routerList.value = payload  
+      routerList.value = payload
     }
 
     const updateMenuActive = (payload) => {
