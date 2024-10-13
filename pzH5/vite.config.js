@@ -4,6 +4,7 @@ import Components from 'unplugin-vue-components/vite'; // 解析模板并自动�
 import { VantResolver } from '@vant/auto-import-resolver'; // 自动引入对应的组件样式
 
 export default {
+  base: './', // 设置项目根路径
   server: {
     port: 4500
   },
